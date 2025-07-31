@@ -2,18 +2,33 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Opening App...</title>
-  <script type="text/javascript">
+  <title>Launching Gamerge...</title>
+  <script>
+    function getQueryValue(key) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(key);
+    }
+
     window.onload = function () {
-      window.location.href = "unitydl://Gamerge";
+      const referralCode = getQueryValue("code");
+      let appUrl = "unitydl://Gamerge";
+
+      if (referralCode) {
+        appUrl += "?code=" + encodeURIComponent(referralCode);
+      }
+
+      // Try to open app
+      window.location.href = appUrl;
+
+      // Optional fallback after delay
       setTimeout(function () {
-        // fallback to Play Store if app is not installed
         window.location.href = "https://play.google.com/store/apps/details?id=com.yourcompany.gamerge";
-      }, 2000); // adjust timing if needed
+      }, 2000);
     };
   </script>
 </head>
 <body>
-  <p>Launching the app... If nothing happens, <a href="unitydl://Gamerge">tap here</a>.</p>
+  <h2>Launching the Gamerge App...</h2>
+  <p>If nothing happens, <a id="fallback" href="#">tap here</a></p>
 </body>
 </html>
