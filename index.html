@@ -2,10 +2,18 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Launching App...</title>
+  <title>Opening App...</title>
+  <script type="text/javascript">
+    window.onload = function () {
+      window.location.href = "unitydl://Gamerge";
+      setTimeout(function () {
+        // fallback to Play Store if app is not installed
+        window.location.href = "https://play.google.com/store/apps/details?id=com.yourcompany.gamerge";
+      }, 2000); // adjust timing if needed
+    };
+  </script>
 </head>
 <body>
-  <h2>Launching the Gamerge App...</h2>
-  <p>If nothing happens, <a href="unitydl://Gamerge">tap here</a></p>
+  <p>Launching the app... If nothing happens, <a href="unitydl://Gamerge">tap here</a>.</p>
 </body>
 </html>
