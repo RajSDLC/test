@@ -11,16 +11,20 @@
 
     window.onload = function () {
       const referralCode = getQueryValue("code");
+      const roomId = getQueryValue("roomId");
+
       let appUrl = "unitydl://Gamerge";
 
       if (referralCode) {
         appUrl += "?code=" + encodeURIComponent(referralCode);
+      } else if (roomId) {
+        appUrl += "?roomId=" + encodeURIComponent(roomId);
       }
 
-      // Try to open app
+      // Try to open the app
       window.location.href = appUrl;
 
-      // Optional fallback after delay
+      // Fallback to Play Store after delay
       setTimeout(function () {
         window.location.href = "https://play.google.com/store/apps/details?id=com.yourcompany.gamerge";
       }, 2000);
@@ -32,3 +36,4 @@
   <p>If nothing happens, <a id="fallback" href="#">tap here</a></p>
 </body>
 </html>
+
